@@ -1,9 +1,8 @@
 from random import randint
+#"Contact groups"
 
-
-def test_add_group(app):
-    group = f"my group{randint(0, 500)}"
-    #group = f"my group433"
+def test_add_group(app, excel_groups):
+    group = excel_groups
     old_list = app.groups.get_group_list()
     if group in old_list:
         app.groups.del_group_with_contacts(group)

@@ -14,6 +14,8 @@ class GroupHelper:
 
     def add_new_group(self, name):
         self.open_group_editor()
+        tree = self.group_editor.window(auto_id="uxAddressTreeView")
+        tree.tree_root().click()
         self.group_editor.window(auto_id="uxNewAddressButton").click()
         input = self.group_editor.window(class_name="Edit")
         input.set_text(name)
@@ -24,8 +26,10 @@ class GroupHelper:
         self.open_group_editor()
         tree = self.group_editor.window(auto_id="uxAddressTreeView")
         root = tree.tree_root()
+        tree.tree_root().click()
         for node in root.children():
             if node.text() == group:
+                node.click()
                 node.click()
                 break
         self.group_editor.window(auto_id="uxDeleteAddressButton").click()
